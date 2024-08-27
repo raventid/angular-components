@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RetirementEditComponent } from '../retirement-edit/retirement-edit.component';
 import { EditAccountComponent } from '../edit-account/edit-account.component';
 
 @Component({
   selector: 'app-retirement',
   standalone: true,
-  imports: [RetirementEditComponent, EditAccountComponent],
+  imports: [EditAccountComponent],
   template: `
 
 <div class="manage-panel">
@@ -35,7 +34,7 @@ import { EditAccountComponent } from '../edit-account/edit-account.component';
           <span class="info-label">Account number:</span>
           <span class="info-value">001077019304</span>
         </div>
-        <span class="edit-icon">&#9998;</span>
+        <span (click)="openPopup()" class="edit-icon">&#9998;</span>
       </div>
       <div class="info-item right-align">
         <span class="info-label">Accumulated investment amount:</span>
@@ -70,10 +69,10 @@ import { EditAccountComponent } from '../edit-account/edit-account.component';
   </div>
 </div>
 
-
-
-        <button (click)="openPopup()">Edit Account</button>
-        <edit-account [isOpen]="isPopupOpen" (close)="closePopup()"></edit-account>
+        <edit-account
+        [isOpen]="isPopupOpen"
+        (close)="closePopup()">
+        </edit-account>
   `,
   styleUrls: ['./retirement.component.css'],
 })
@@ -101,14 +100,6 @@ export class RetirementComponent {
 
   // Edit related logic
   showPopup : boolean = false;
-
-  // openPopup() {
-  //   this.showPopup = true;
-  // }
-
-  // closePopup() {
-  //   this.showPopup = false;
-  // }
 
   accounts: any[] = [
     { currency: 'TWD', number: '11218812045', balance: '199,999,999' }
