@@ -1,0 +1,104 @@
+.manage-panel {
+  font-family: Arial, sans-serif;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.info-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-content {
+  display: flex;
+  align-items: center;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #666;
+  margin-right: 5px;
+}
+
+.info-value {
+  font-size: 14px;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.right-align {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.sub-text {
+  font-size: 12px;
+  color: #666;
+  font-weight: normal;
+}
+
+button {
+  padding: 6px 12px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.enquire-button {
+  align-self: flex-start;
+}
+
+.edit-icon {
+  color: #007bff;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.suspension-button {
+  margin-left: 10px;
+}
+
+/* Adjustments for specific layouts */
+.info-item:has(.adjust-button) .info-content,
+.info-item:has(.redemption-button) .info-content {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.info-item:has(.adjust-button) .info-label,
+.info-item:has(.redemption-button) .info-label {
+  margin-right: 0;
+  margin-bottom: 5px;
+}
