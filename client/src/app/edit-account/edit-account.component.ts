@@ -7,36 +7,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   selector: 'edit-account',
   standalone: true,
   imports: [CommonModule, FormsModule, HttpClientModule],
-  template: `
-    <div *ngIf="isOpen" class="popup-container">
-      <div class="overlay" (click)="closePopup()"></div>
-      <div class="popup">
-        <h2>Change account number:</h2>
-        <div class="form-group">
-          <label for="accountSelect">Please select your debit account number:</label>
-          <div class="account-select">
-            <select>
-              <option>TWD</option>
-            </select>
-            <select id="accountSelect" [(ngModel)]="selectedAccount" (change)="onAccountSelect()">
-              <option [ngValue]="null" disabled>Select an account</option>
-              <option *ngFor="let account of accounts" [ngValue]="account">
-                {{ account }}
-              </option>
-            </select>
-            <span *ngIf="selectedAccount !== null" class="balance">
-              Account balance: {{ selectedAccount | number }}
-            </span>
-          </div>
-        </div>
-        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-        <div class="buttons">
-          <button class="cancel" (click)="closePopup()">Cancel</button>
-          <button class="determine" (click)="confirmSelection()" [disabled]="!selectedAccount">Determine</button>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './edit-account.component.html',
   styleUrls: ['./edit-account.component.css'],
 })
 export class EditAccountComponent implements OnInit {

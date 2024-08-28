@@ -5,75 +5,7 @@ import { EditAccountComponent } from '../edit-account/edit-account.component';
   selector: 'app-retirement',
   standalone: true,
   imports: [EditAccountComponent],
-  template: `
-
-<div class="manage-panel">
-  <div class="header">
-    <h2>Manage</h2>
-    <button class="enquire-button">Enquire history</button>
-  </div>
-  <div class="info-grid">
-    <div class="info-row">
-      <div class="info-item">
-      <div class="info-content">
-        <span class="info-label">Creation date:</span>
-        <span class="info-value">2019-01-18</span>
-        </div>
-      </div>
-      <div class="info-item right-align">
-        <div class="info-content">
-          <span class="info-label">Investment amount:</span>
-          <span class="info-value">TWD 50,000 <span class="sub-text">(per month)</span></span>
-        </div>
-        <button class="adjust-button">Adjust amount</button>
-      </div>
-    </div>
-    <div class="info-row">
-      <div class="info-item">
-        <div class="info-content">
-          <span class="info-label">Account number:</span>
-          <span class="info-value">001077019304</span>
-        </div>
-        <span (click)="openPopup()" class="edit-icon">&#9998;</span>
-      </div>
-      <div class="info-item right-align">
-        <span class="info-label">Accumulated investment amount:</span>
-        <span class="info-value">TWD 50,000</span>
-      </div>
-    </div>
-    <div class="info-row">
-      <div class="info-item">
-        <div class="info-content">
-          <span class="info-label">Charge date:</span>
-          <span class="info-value">1 of the month <span class="sub-text">(Next payment date: 2018-11-01)</span></span>
-        </div>
-        <span class="edit-icon">&#9998;</span>
-      </div>
-      <div class="info-item right-align">
-        <div class="info-content">
-          <span class="info-label">Current market value:</span>
-          <span class="info-value">TWD 50,011</span>
-        </div>
-        <button class="redemption-button">Redemption</button>
-      </div>
-    </div>
-    <div class="info-row">
-      <div class="info-item">
-        <div class="info-content">
-          <span class="info-label">Status:</span>
-          <span class="info-value">Monthly charge</span>
-        </div>
-        <button class="suspension-button">Suspension of investment</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-        <edit-account
-        [isOpen]="isPopupOpen"
-        (close)="closePopup()">
-        </edit-account>
-  `,
+  templateUrl: './retirement.component.html',
   styleUrls: ['./retirement.component.css'],
 })
 export class RetirementComponent {
