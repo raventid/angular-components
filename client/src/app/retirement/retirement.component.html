@@ -23,7 +23,7 @@
             <div class="info-item">
                 <div class="info-content">
                     <span class="info-label">Account number:</span>
-                    <span class="info-value">001077019304</span>
+                    <span class="info-value" *ngIf="selectedAccount !== null">{{ selectedAccount }}</span>
                 </div>
                 <span (click)="openPopup()" class="edit-icon">&#9998;</span>
             </div>
@@ -62,5 +62,6 @@
 
 <edit-account
     [isOpen]="isPopupOpen"
-    (close)="closePopup()">
+    (close)="closePopup()"
+    (selectedAccountChange)="onSelectedAccountChange($event)">
 </edit-account>

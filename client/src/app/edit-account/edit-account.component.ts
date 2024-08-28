@@ -13,9 +13,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class EditAccountComponent implements OnInit {
   @Input() isOpen: boolean = false;
   @Output() close = new EventEmitter<void>();
+  @Output() selectedAccountChange = new EventEmitter<number | null>();
+
+  private _selectedAccount: number | null = null;
+  get selectedAccount(): number | null {
+    return this._selectedAccount;
+  }
+  set selectedAccount(value: number | null) {
+    this._selectedAccount = value;
+  }
 
   accounts: number[] = [];
-  selectedAccount: number | null = null;
   errorMessage: string = '';
 
   constructor(private http: HttpClient) {}
@@ -28,6 +36,8 @@ export class EditAccountComponent implements OnInit {
     this.http.get<number[]>('http://localhost:3000/accounts').subscribe({
       next: (data) => {
         this.accounts = data;
+        this.selectedAccount = this.accounts.values().next().value;
+        this.selectedAccountChange.emit(this.selectedAccount);
       },
       error: (error) => {
         console.error('Error fetching accounts', error);
@@ -37,8 +47,7 @@ export class EditAccountComponent implements OnInit {
   }
 
   onAccountSelect() {
-    // The balance is now automatically displayed in the template
-    // using the selectedAccount value
+    console.log(`Account changed in select: ${this.selectedAccount}`);
   }
 
   confirmSelection() {
@@ -46,6 +55,7 @@ export class EditAccountComponent implements OnInit {
       this.http.post('http://localhost:3000/select-account', { accountNumber: this.selectedAccount }).subscribe({
         next: (response: any) => {
           console.log(`Account ${this.selectedAccount} selected`);
+          this.selectedAccountChange.emit(this.selectedAccount);
           this.closePopup();
         },
         error: (error) => {
